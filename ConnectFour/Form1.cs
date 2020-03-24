@@ -16,6 +16,9 @@ namespace ConnectFour
 
         public bool playerTurn = true;
 
+        //new scoreboard idea    TESTING
+        public int[,] scoreBoard = new int[10, 16];
+
         public ConnectFour()
         {
             InitializeComponent();
@@ -130,12 +133,12 @@ namespace ConnectFour
             turnButton(playerColourRed, playerTurn);
         }
 
+        //GAMEBOARD CLICK
         private void gameBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             turnButton(playerColourRed, !playerTurn);
 
-            
             int rowindex = gameBoard.RowCount-1;
 
             while (gameBoard[e.ColumnIndex, rowindex].Style.BackColor == Color.Red || gameBoard[e.ColumnIndex, rowindex].Style.BackColor == Color.Yellow)
