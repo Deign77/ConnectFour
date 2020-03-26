@@ -192,7 +192,7 @@
             // 
             // P1Score
             // 
-            this.P1Score.BackColor = System.Drawing.Color.MediumBlue;
+            this.P1Score.BackColor = System.Drawing.Color.Blue;
             this.P1Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.P1Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.P1Score.ForeColor = System.Drawing.SystemColors.Info;
@@ -229,7 +229,7 @@
             // 
             // P2Score
             // 
-            this.P2Score.BackColor = System.Drawing.Color.MediumBlue;
+            this.P2Score.BackColor = System.Drawing.Color.Blue;
             this.P2Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.P2Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.P2Score.ForeColor = System.Drawing.SystemColors.Info;
@@ -371,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumBlue;
+            this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(634, 511);
             this.Controls.Add(this.P2ScoreLabel);
             this.Controls.Add(this.P2Score);
