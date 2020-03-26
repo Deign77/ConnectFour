@@ -16,11 +16,15 @@ namespace ConnectFour
 
         public static bool playerTurn = true;
 
+        public static int playerScore = 0;
 
-        //new scoreboard idea    TESTED 
+        public static int computerScore = 0;
+
+
+        //tracks the pieces on the board
         public int[,] scoreBoard = new int[8, 10];
        
-
+        //dropdown menu options
         public ConnectFour()
         {
             InitializeComponent();
@@ -38,7 +42,7 @@ namespace ConnectFour
 
         private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The rules are simple.\nFirst one to win is the winner!", "The Rules");
+            MessageBox.Show("The rules are simple.\n\nFirst one to win is the winner!", "The Rules");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,8 +59,10 @@ namespace ConnectFour
                 {
                     gameBoard.Rows.Add();
                 }
-            }                    
-            
+            }
+
+            P1Score.Text = playerScore.ToString();
+            P2Score.Text = computerScore.ToString();
 
             //setting dimensions of the columns and rows
             foreach (DataGridViewColumn c in gameBoard.Columns)
@@ -108,7 +114,7 @@ namespace ConnectFour
             
             return d == DialogResult.Yes ? true : false;
         }
-
+        //toggle colour & text of player turn button
         private void turnButton(bool colour, bool turn)
         {
             textBox1.Text = turn ? "Player's turn!" : "Computer's turn!";
@@ -120,6 +126,8 @@ namespace ConnectFour
         //starts a new game
         private void startNewGame()
         {
+            playerColourRed = playerTurn = false;
+
             InitializeBoard();
 
             playerColourRed = chooseColour();
@@ -141,7 +149,7 @@ namespace ConnectFour
 
             turnButton(playerColourRed, !playerTurn);
 
-            int rowIndex = gameBoard.RowCount-1;
+            int rowIndex = gameBoard.RowCount - 1;
 
             while (gameBoard[e.ColumnIndex, rowIndex].Style.BackColor == Color.Red || gameBoard[e.ColumnIndex, rowIndex].Style.BackColor == Color.Yellow)
             {
@@ -153,10 +161,9 @@ namespace ConnectFour
                 rowIndex--;
             }
 
+            gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = textBox1.BackColor == Color.Red ? Color.Yellow : Color.Red;
 
-            //gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = textBox1.BackColor == Color.Red ? Color.Red : Color.Yellow;
-
-           
+            /*
             if (playerTurn)
             {
                 gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = playerColourRed ? Color.Red : Color.Yellow;
@@ -165,96 +172,88 @@ namespace ConnectFour
             {
                 gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = playerColourRed ? Color.Yellow : Color.Red;
             }
-          
-
-
-
-
-
-
-            //records last move on scoreBoard
-            scoreBoard[rowIndex, e.ColumnIndex] = playerTurn ? 1 : 2;
-
-
-
+            */
 
 
             int lastTurn = playerTurn ? 1 : 2;
 
-            
-            
+            //records last move on scoreBoard
+            scoreBoard[rowIndex, e.ColumnIndex] = lastTurn;
 
-            
-            if (checkLeftRight(rowIndex, e.ColumnIndex, lastTurn) || checkUpDown(rowIndex, e.ColumnIndex, lastTurn))
+            if (
+                //checks left and right
+                checkOpDir(rowIndex, e.ColumnIndex, lastTurn, new int[] { 0, -1, 0, 1 }, false) || 
+                //checks up and down
+                checkOpDir(rowIndex, e.ColumnIndex, lastTurn, new int[]{-1, 0, 1, 0}, true)  ||
+                //check upleft and downright
+                checkOpDir(rowIndex, e.ColumnIndex, lastTurn, new int[] { -1, -1, 1, 1 }, true) || 
+                //check upright and downleft
+                checkOpDir(rowIndex, e.ColumnIndex, lastTurn, new int[] { -1, 1, 1, -1 }, true) 
+                )
             {
-                if (playerTurn) MessageBox.Show("You win!", "Winner");
-                else MessageBox.Show("You lose!", "Loser");
-
-                scoreBoard = new int[8, 10];
-
+                if (playerTurn)
+                {
+                    MessageBox.Show("You win!", "Winner");
+                    playerScore++;
+                }     
+                else
+                {
+                    MessageBox.Show("You lose!", "Loser");
+                    computerScore++;
+                }
 
                 
 
-
+                scoreBoard = new int[8, 10];
 
                 DialogResult q = MessageBox.Show("Do you want to play again?", "Play again?", MessageBoxButtons.YesNo);
                 if (q == DialogResult.Yes) startNewGame();
                 else Close();
             }
-            
-         
 
             //important
             playerTurn = !playerTurn;
-
-
         }
-
-        //CHECKING LEFT AND RIGHT
-        public bool checkLeftRight(int r, int c, int lastTurn)
+       
+        //trying to write method to wincheck any direction given the right arguments
+        //CHECKING opposite directions ((TESTing!!))
+        //SUCCESS! but can it work for diagonals??
+        //yes it can
+        public bool checkOpDir(int r, int c, int lastTurn, int[] ar, bool isRow)
         {
             int numsInRow = 1;
-            //check left 
-            while (c > 0 && scoreBoard[r, c-1] == lastTurn)
+            //check this way
+            try
             {
+                while ((isRow ? r : c) > 0 && scoreBoard[r + ar[0], c + ar[1]] == lastTurn)
+                {
                     numsInRow++;
-                    c--;
+                    r += ar[0];
+                    c += ar[1];
+                }
+                for (int i = 0; i < numsInRow - 1; i++)
+                {
+                    r -= ar[0];
+                    c -= ar[1];
+                }
             }
-            c += numsInRow - 1;
-            //check right
-            while (c < gameBoard.ColumnCount-1 && scoreBoard[r, c + 1] == lastTurn)
-            {            
+            catch (System.IndexOutOfRangeException) { }
+            //check that way    
+            try
+            {
+                while (((isRow ? r : c) < (isRow ? gameBoard.RowCount : gameBoard.ColumnCount) - 1) && scoreBoard[r + ar[2], c + ar[3]] == lastTurn)
+                {
                     numsInRow++;
-                    c++;     
+                    r += ar[2];
+                    c += ar[3];
+                }
+
             }
+            catch (System.IndexOutOfRangeException) { }
+            
             if (numsInRow >= 4) return true;
             return false;
         }
-        //CHECKING UP AND DOWN
-        public bool checkUpDown(int r, int c, int lastTurn)
-        {
-            int numsInRow = 1;
-            //check up
-            while (r > 0 && scoreBoard[r-1, c] == lastTurn)
-            {
-                numsInRow++;
-                r--;
-            }
-            r += numsInRow - 1;
-            //check down 
-            while (r < gameBoard.RowCount - 1 && scoreBoard[r+1, c] == lastTurn)
-            {
-                numsInRow++;
-                r++;
-            }
-
-            if (numsInRow >= 4) return true;
-            return false;
-        }
-
-
-
-
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
