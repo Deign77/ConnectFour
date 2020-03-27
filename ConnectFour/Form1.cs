@@ -12,24 +12,22 @@ namespace ConnectFour
 {
     public partial class ConnectFour : Form
     {
-        public bool playerColourRed = true;
+        private bool playerColourRed = true;
 
-        public static bool playerTurn = true;
+        private static bool playerTurn = true;
 
         public static int playerScore = 0;
-
         public static int computerScore = 0;
 
-
-        //tracks the pieces on the board
+        //tracks the moves on the board
         public int[,] scoreBoard = new int[8, 10];
        
-        //dropdown menu options
         public ConnectFour()
         {
             InitializeComponent();
         }
 
+        //dropdown menu options
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -47,7 +45,7 @@ namespace ConnectFour
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            startNewGame();
+            
         }
 
         //runs on start, intializes board
@@ -61,6 +59,8 @@ namespace ConnectFour
                 }
             }
 
+            scoreBoard = new int[8, 10];
+
             P1Score.Text = playerScore.ToString();
             P2Score.Text = computerScore.ToString();
 
@@ -69,7 +69,6 @@ namespace ConnectFour
                 c.Width = 40;
             foreach (DataGridViewRow r in gameBoard.Rows)
                 r.Height = 40;
-
 
             textBox1.ForeColor = Color.Black;
 
@@ -103,12 +102,12 @@ namespace ConnectFour
             DialogResult d = MessageBox.Show("Do you want to have the first turn?", "Who goes first?", MessageBoxButtons.YesNo);
             if (d == DialogResult.Yes)
             {
-                MessageBox.Show("Okay, you get to move first.");
+                MessageBox.Show("Okay, you get to move first.", "Player turn first");
                 playerTurn = true;
             }   
             else
             {
-                MessageBox.Show("Okay, I'll go first.");
+                MessageBox.Show("Okay, I'll go first.", "Computer turn first");
                 playerTurn = false;
             }
             
@@ -120,14 +119,12 @@ namespace ConnectFour
             textBox1.Text = turn ? "Player's turn!" : "Computer's turn!";
 
             if (turn) textBox1.BackColor = colour ? Color.Red : Color.Yellow;
-            else if (!turn) textBox1.BackColor = !colour ? Color.Red : Color.Yellow;
+            else textBox1.BackColor = !colour ? Color.Red : Color.Yellow;
         }
 
         //starts a new game
         private void startNewGame()
         {
-            playerColourRed = playerTurn = false;
-
             InitializeBoard();
 
             playerColourRed = chooseColour();
@@ -147,11 +144,12 @@ namespace ConnectFour
         private void gameBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            turnButton(playerColourRed, !playerTurn);
-
             int rowIndex = gameBoard.RowCount - 1;
 
-            while (gameBoard[e.ColumnIndex, rowIndex].Style.BackColor == Color.Red || gameBoard[e.ColumnIndex, rowIndex].Style.BackColor == Color.Yellow)
+            
+
+
+            while (scoreBoard[rowIndex, e.ColumnIndex] != 0)
             {
                 if (rowIndex == 0)
                 {
@@ -161,9 +159,12 @@ namespace ConnectFour
                 rowIndex--;
             }
 
-            gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = textBox1.BackColor == Color.Red ? Color.Yellow : Color.Red;
+            
+            //gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = textBox1.BackColor == Color.Yellow ? Color.Yellow : Color.Red;
 
-            /*
+
+            turnButton(playerColourRed, !playerTurn);
+            
             if (playerTurn)
             {
                 gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = playerColourRed ? Color.Red : Color.Yellow;
@@ -172,13 +173,14 @@ namespace ConnectFour
             {
                 gameBoard[e.ColumnIndex, rowIndex].Style.BackColor = playerColourRed ? Color.Yellow : Color.Red;
             }
-            */
-
+           
 
             int lastTurn = playerTurn ? 1 : 2;
 
             //records last move on scoreBoard
             scoreBoard[rowIndex, e.ColumnIndex] = lastTurn;
+
+
 
             if (
                 //checks left and right
@@ -202,23 +204,20 @@ namespace ConnectFour
                     computerScore++;
                 }
 
-                
 
-                scoreBoard = new int[8, 10];
+                
 
                 DialogResult q = MessageBox.Show("Do you want to play again?", "Play again?", MessageBoxButtons.YesNo);
                 if (q == DialogResult.Yes) startNewGame();
                 else Close();
             }
 
+            
             //important
             playerTurn = !playerTurn;
         }
        
-        //trying to write method to wincheck any direction given the right arguments
-        //CHECKING opposite directions ((TESTing!!))
-        //SUCCESS! but can it work for diagonals??
-        //yes it can
+        //winChecker
         public bool checkOpDir(int r, int c, int lastTurn, int[] ar, bool isRow)
         {
             int numsInRow = 1;
