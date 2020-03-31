@@ -1,0 +1,35 @@
+[33mcommit 2f0f7ad1a34645f79e8d62dcb76ac29f5a5273ba[m[33m ([m[1;36mHEAD -> [m[1;32mnewTurnlabel[m[33m, [m[1;31morigin/newTurnlabel[m[33m, [m[1;31morigin/downsizedBoard[m[33m, [m[1;32mdownsizedBoard[m[33m)[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Fri Mar 27 15:17:55 2020 +0000
+
+    still working on bug, will try different approach with new branch
+
+[33mcommit bc3f922e306e451a4d99046505397e013c2ebcff[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Thu Mar 26 15:51:58 2020 +0000
+
+    Basically finished, just 1 more bug to fix
+
+[33mcommit c6cedbb056f82313e77cd27548425f1442d77a0d[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Thu Mar 26 10:31:54 2020 +0000
+
+    win checking now works for vertical and horizontal wins, need to work on diagonal wins next
+
+[33mcommit 315ff0fa9527f782ea0a9efb2e87287f158718a1[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Wed Mar 25 10:52:42 2020 +0000
+
+    Downsized board from 10x16 to 8x10
+
+[33mcommit d30e0884653948d1a7bd657fe70d3c499ee37b90[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Tue Mar 24 13:57:41 2020 +0000
+
+    Could be almost done. Just need to write scoring system.
+
+[33mcommit 9d09141e47f6245a9af071d680b2b0f36781d4a6[m
+Author: Deign77 <david.wesseling1@gmail.com>
+Date:   Sat Mar 21 14:27:08 2020 +0000
+
+    First commit
