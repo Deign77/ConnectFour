@@ -48,11 +48,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameBoard = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.P1Score = new System.Windows.Forms.TextBox();
-            this.P1ScoreLabel = new System.Windows.Forms.Label();
-            this.P2ScoreLabel = new System.Windows.Forms.Label();
-            this.P2Score = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -63,6 +58,13 @@
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.P1Score = new System.Windows.Forms.TextBox();
+            this.P1ScoreLabel = new System.Windows.Forms.Label();
+            this.P2ScoreLabel = new System.Windows.Forms.Label();
+            this.P2Score = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +95,7 @@
             // 
             this.newGameToolStripMenuItem.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(145, 28);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
             this.newGameToolStripMenuItem.Text = "New game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
@@ -101,7 +103,7 @@
             // 
             this.exitToolStripMenuItem.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 28);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -175,72 +177,6 @@
             this.gameBoard.Size = new System.Drawing.Size(400, 320);
             this.gameBoard.TabIndex = 1;
             this.gameBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gameBoard_CellContentClick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.MediumBlue;
-            this.textBox1.Font = new System.Drawing.Font("Sitka Banner", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(201, 444);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 50);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Connect Four";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // P1Score
-            // 
-            this.P1Score.BackColor = System.Drawing.Color.Blue;
-            this.P1Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.P1Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.P1Score.ForeColor = System.Drawing.SystemColors.Info;
-            this.P1Score.Location = new System.Drawing.Point(148, 452);
-            this.P1Score.Multiline = true;
-            this.P1Score.Name = "P1Score";
-            this.P1Score.ReadOnly = true;
-            this.P1Score.Size = new System.Drawing.Size(34, 32);
-            this.P1Score.TabIndex = 3;
-            this.P1Score.Text = "0";
-            this.P1Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // P1ScoreLabel
-            // 
-            this.P1ScoreLabel.AutoSize = true;
-            this.P1ScoreLabel.Font = new System.Drawing.Font("Sitka Banner", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.P1ScoreLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.P1ScoreLabel.Location = new System.Drawing.Point(33, 457);
-            this.P1ScoreLabel.Name = "P1ScoreLabel";
-            this.P1ScoreLabel.Size = new System.Drawing.Size(109, 24);
-            this.P1ScoreLabel.TabIndex = 4;
-            this.P1ScoreLabel.Text = "Player1 Score:";
-            // 
-            // P2ScoreLabel
-            // 
-            this.P2ScoreLabel.AutoSize = true;
-            this.P2ScoreLabel.Font = new System.Drawing.Font("Sitka Banner", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.P2ScoreLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.P2ScoreLabel.Location = new System.Drawing.Point(468, 457);
-            this.P2ScoreLabel.Name = "P2ScoreLabel";
-            this.P2ScoreLabel.Size = new System.Drawing.Size(112, 24);
-            this.P2ScoreLabel.TabIndex = 6;
-            this.P2ScoreLabel.Text = "Player2 Score:";
-            // 
-            // P2Score
-            // 
-            this.P2Score.BackColor = System.Drawing.Color.Blue;
-            this.P2Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.P2Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.P2Score.ForeColor = System.Drawing.SystemColors.Info;
-            this.P2Score.Location = new System.Drawing.Point(575, 452);
-            this.P2Score.Multiline = true;
-            this.P2Score.Name = "P2Score";
-            this.P2Score.ReadOnly = true;
-            this.P2Score.Size = new System.Drawing.Size(56, 32);
-            this.P2Score.TabIndex = 5;
-            this.P2Score.Text = "0";
-            this.P2Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Column1
             // 
@@ -367,12 +303,108 @@
             this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.MediumBlue;
+            this.textBox1.Font = new System.Drawing.Font("Sitka Banner", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Location = new System.Drawing.Point(205, 430);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(240, 50);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "Connect Four";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // P1Score
+            // 
+            this.P1Score.BackColor = System.Drawing.Color.Blue;
+            this.P1Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.P1Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P1Score.ForeColor = System.Drawing.SystemColors.Info;
+            this.P1Score.Location = new System.Drawing.Point(145, 445);
+            this.P1Score.Multiline = true;
+            this.P1Score.Name = "P1Score";
+            this.P1Score.ReadOnly = true;
+            this.P1Score.Size = new System.Drawing.Size(34, 32);
+            this.P1Score.TabIndex = 3;
+            this.P1Score.Text = "0";
+            this.P1Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // P1ScoreLabel
+            // 
+            this.P1ScoreLabel.AutoSize = true;
+            this.P1ScoreLabel.Font = new System.Drawing.Font("Sitka Banner", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P1ScoreLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.P1ScoreLabel.Location = new System.Drawing.Point(30, 450);
+            this.P1ScoreLabel.Name = "P1ScoreLabel";
+            this.P1ScoreLabel.Size = new System.Drawing.Size(109, 24);
+            this.P1ScoreLabel.TabIndex = 4;
+            this.P1ScoreLabel.Text = "Player1 Score:";
+            // 
+            // P2ScoreLabel
+            // 
+            this.P2ScoreLabel.AutoSize = true;
+            this.P2ScoreLabel.Font = new System.Drawing.Font("Sitka Banner", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P2ScoreLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.P2ScoreLabel.Location = new System.Drawing.Point(468, 450);
+            this.P2ScoreLabel.Name = "P2ScoreLabel";
+            this.P2ScoreLabel.Size = new System.Drawing.Size(112, 24);
+            this.P2ScoreLabel.TabIndex = 6;
+            this.P2ScoreLabel.Text = "Player2 Score:";
+            // 
+            // P2Score
+            // 
+            this.P2Score.BackColor = System.Drawing.Color.Blue;
+            this.P2Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.P2Score.Font = new System.Drawing.Font("Sitka Banner", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P2Score.ForeColor = System.Drawing.SystemColors.Info;
+            this.P2Score.Location = new System.Drawing.Point(568, 445);
+            this.P2Score.Multiline = true;
+            this.P2Score.Name = "P2Score";
+            this.P2Score.ReadOnly = true;
+            this.P2Score.Size = new System.Drawing.Size(56, 32);
+            this.P2Score.TabIndex = 5;
+            this.P2Score.Text = "0";
+            this.P2Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(28, 509);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(156, 27);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Player vs Computer";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.ForeColor = System.Drawing.Color.White;
+            this.checkBox2.Location = new System.Drawing.Point(430, 509);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(181, 27);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "Computer vs Computer";
+            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // ConnectFour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
-            this.ClientSize = new System.Drawing.Size(634, 511);
+            this.ClientSize = new System.Drawing.Size(634, 561);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.P2ScoreLabel);
             this.Controls.Add(this.P2Score);
             this.Controls.Add(this.P1ScoreLabel);
@@ -420,6 +452,8 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column8;
         private System.Windows.Forms.DataGridViewButtonColumn Column9;
         private System.Windows.Forms.DataGridViewButtonColumn Column10;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
