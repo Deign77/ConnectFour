@@ -166,7 +166,7 @@ namespace ConnectFour
             while (scoreBoard[rowInd, colIndex] != 0)
             {
                 if (rowInd == 0) colIndex++;
-                rowInd--;
+                else rowInd--;
             }
 
             gameBoard[colIndex, rowInd].Style.BackColor = (a == 1) ? P1ScoreLabel.BackColor : P2ScoreLabel.BackColor;
