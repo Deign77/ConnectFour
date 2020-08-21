@@ -85,7 +85,7 @@ namespace ConnectFour
             DialogResult d = MessageBox.Show("Do you want to have the first turn?", "Who goes first?", MessageBoxButtons.YesNo);
 
             if (d == DialogResult.Yes) MessageBox.Show("Okay, you get to move first.", "Player turn first");
-
+            
             else MessageBox.Show("Okay, I'll go first.", "Computer turn first");
             
             return d == DialogResult.Yes ? true : false;
@@ -166,7 +166,7 @@ namespace ConnectFour
             while (scoreBoard[rowInd, colIndex] != 0)
             {
                 if (rowInd == 0) colIndex++;
-                rowInd--;
+                else rowInd--;
             }
 
             gameBoard[colIndex, rowInd].Style.BackColor = (a == 1) ? P1ScoreLabel.BackColor : P2ScoreLabel.BackColor;
@@ -285,19 +285,9 @@ namespace ConnectFour
             return false;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void gameBoard_SelectionChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            gameBoard.ClearSelection();
         }
     }
 }

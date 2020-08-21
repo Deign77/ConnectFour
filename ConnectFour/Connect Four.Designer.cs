@@ -79,7 +79,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(634, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -95,7 +94,7 @@
             // 
             this.newGameToolStripMenuItem.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(145, 28);
             this.newGameToolStripMenuItem.Text = "New game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
@@ -103,7 +102,7 @@
             // 
             this.exitToolStripMenuItem.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 28);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -158,10 +157,10 @@
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(3);
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Red;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gameBoard.DefaultCellStyle = dataGridViewCellStyle11;
-            this.gameBoard.Location = new System.Drawing.Point(120, 80);
+            this.gameBoard.Location = new System.Drawing.Point(123, 80);
             this.gameBoard.Name = "gameBoard";
             this.gameBoard.ReadOnly = true;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -177,6 +176,7 @@
             this.gameBoard.Size = new System.Drawing.Size(400, 320);
             this.gameBoard.TabIndex = 1;
             this.gameBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gameBoard_CellContentClick);
+            this.gameBoard.SelectionChanged += new System.EventHandler(this.gameBoard_SelectionChanged);
             // 
             // Column1
             // 
@@ -315,7 +315,6 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Connect Four";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // P1Score
             // 
@@ -418,7 +417,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connect Four ";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).EndInit();
